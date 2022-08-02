@@ -19,12 +19,12 @@ export function RatingWidget() {
                                                                                               title="Meh - 3.5 stars"></label>
                 <input type="radio" id="star3" name="rating" value="3" checked={rating==='3'}/><label className="full" htmlFor="star3"
                                                                                title="Meh - 3 stars"></label>
-                <input type="radio" id="star2half" name="rating" value="2 and a half"/><label className="half"
+                <input type="radio" id="star2half" name="rating" value="2 and a half" checked={rating==='2 and a half'}/><label className="half"
                                                                                               htmlFor="star2half"
                                                                                               title="Kinda bad - 2.5 stars"></label>
-                <input type="radio" id="star2" name="rating" value="2"/><label className="full" htmlFor="star2"
+                <input type="radio" id="star2" name="rating" value="2" checked={rating==='2'} /><label className="full" htmlFor="star2"
                                                                                title="Kinda bad - 2 stars"></label>
-                <input type="radio" id="star1half" name="rating" value="1 and a half"/><label className="half"
+                <input type="radio" id="star1half" name="rating" value="1 and a half" checked={rating==='1 and a halfgit t'}/><label className="half"
                                                                                               htmlFor="star1half"
                                                                                               title="Meh - 1.5 stars"></label>
                 <input type="radio" id="star1" name="rating" value="1"/><label className="full" htmlFor="star1"
