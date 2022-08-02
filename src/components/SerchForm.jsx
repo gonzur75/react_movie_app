@@ -67,7 +67,7 @@ export function SearchForm() {
                             >{movie.Title} {movie.Year}</h5>
                             <RatingWidget clasName/>
                             <div className='overlay d-flex align-items-center justify-content-center'>
-                                Add to Favourites
+                                <h5>Add to favorites</h5>
                             </div>
                             </div>
                     ))}
