@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import {useEffect, useState} from "react";
 import * as PropTypes from "prop-types";
 import {MovieItem} from "./MovieItem";
-import {RatingWidget} from "./RatingWidget";
+import {MovieList} from "./MovieList";
 
 
 const getMovie = async (title) => {
@@ -18,6 +18,11 @@ const getMovie = async (title) => {
 }
 
 MovieItem.propTypes = {movie: PropTypes.any};
+
+MovieList.propTypes = {
+    movies: PropTypes.arrayOf(PropTypes.any),
+    callbackfn: PropTypes.func
+};
 
 export function SearchForm() {
     const [movies, setMovies] = useState([])
@@ -58,21 +63,9 @@ export function SearchForm() {
                 </Col>
 
             </Form>
-            <section className="results">
-                <div className='row'>
-                    {movies.map(movie => (
-                        <div className='image-container result'>
-                            <img src={movie.Poster}/>
-                            <h5
-                            >{movie.Title} {movie.Year}</h5>
-                            <RatingWidget clasName/>
-                            <div className='overlay d-flex align-items-center justify-content-center'>
-                                <h5>Add to favorites</h5>
-                            </div>
-                            </div>
-                    ))}
-                </div>
-            </section>
+            <MovieList movies={movies} callbackfn={movie => (
+                <MovieItem key={movie.imdbID} movie={movie}/>
+            )}/>
 
 
         </>
