@@ -1,9 +1,10 @@
 import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import {useEffect, useState} from "react";
-import {logDOM} from "@testing-library/react";
+import * as PropTypes from "prop-types";
+import {MovieItem} from "./MovieItem";
+import {RatingWidget} from "./RatingWidget";
 
 
 const getMovie = async (title) => {
@@ -16,6 +17,8 @@ const getMovie = async (title) => {
     }
 }
 
+MovieItem.propTypes = {movie: PropTypes.any};
+
 export function SearchForm() {
     const [movies, setMovies] = useState([])
     const [searchValue, setSearchValue] = useState('')
@@ -27,8 +30,8 @@ export function SearchForm() {
         setTitle(e.target.value)
     }
 
-    useEffect(()=>{
-        getMovie(searchValue).then((data) => data&&setMovies(data))
+    useEffect(() => {
+        getMovie(searchValue).then((data) => data && setMovies(data))
     }, [searchValue])
 
     function handleSubmit(e) {
@@ -39,27 +42,39 @@ export function SearchForm() {
     return (
         <>
             <Form>
-                <Row>
-                    <Col>
-                        <Form.Group className="my-1">
-                            <Form.Control type="text"
-                                          onChange={handleChange}
+                <Col>
+                    <Form.Group className="my-1">
+                        <Form.Control type="text"
+                                      onChange={handleChange}
 
-                                          name="title" value={title}
-                                          placeholder="Find a movie ..."/>
-                        </Form.Group>
-                    </Col>
-                    <Col className="my-1">
-                        <Button variant="primary" type="submit" onClick={handleSubmit}>
-                            Submit
-                        </Button>
-                    </Col>
-                </Row>
+                                      name="title" value={title}
+                                      placeholder="Find a movie ..."/>
+                    </Form.Group>
+                </Col>
+                <Col className="my-1">
+                    <Button variant="primary" type="submit" onClick={handleSubmit}>
+                        Submit
+                    </Button>
+                </Col>
+
             </Form>
-            <div>
-                <ul>
-                {movies.map((movie, index) => <li key={index}>{movie.Title}</li>)}
-                </ul>
-            </div>
-        </>);
+            <section className="results">
+                <div className='row'>
+                    {movies.map(movie => (
+                        <div className='image-container result'>
+                            <img src={movie.Poster}/>
+                            <h5
+                            >{movie.Title} {movie.Year}</h5>
+                            <RatingWidget clasName/>
+                            <div className='overlay d-flex align-items-center justify-content-center'>
+                                Add to Favourites
+                            </div>
+                            </div>
+                    ))}
+                </div>
+            </section>
+
+
+        </>
+    )
 }

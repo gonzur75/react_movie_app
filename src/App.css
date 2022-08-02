@@ -1,38 +1,140 @@
-.App {
-  text-align: center;
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    font-family: "montserrat", sans-serif;
+    background: linear-gradient(to right, #000428, #004e92);
+}
+.results .result h5 {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    background: #272829;
+    flex: 1 100%;
+    transition: 0.4s ease-out;
+}
+.results .result img {
+    /* display: block; */
+    width: 100%;
+    padding: 10px 2px;
+    margin: 0 auto;
+    height: 350px;
+    width: 230px;
+}
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 -15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.results .result {
+    width: 20%;
+    min-width: 250px;
+    background: #000000;
+    max-height: 500px;
+    padding: 15px;
+    margin: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.card-image{
+    width:  100px;
+    height: 150px;
+    object-fit: cover;
+    text-align: center;
+}
+.card-title {
+    font-weight: 900;
+    flex-grow: 1;
+}
+.card-description {
+    font-size: 13px;
+
+    overflow: hidden;
+    height: 100px;
+}
+.card-text-body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.image-container {
+    position: relative;
+    transition: transform 0.2s;
 }
 
-.App-link {
-  color: #61dafb;
+.image-container:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.image-container:hover .overlay {
+    opacity: 1;
 }
+
+.overlay {
+    position: absolute;
+
+    background: rgba(0, 0, 0, 0.8);
+    width: 230px;
+    transition: 0.5s ease;
+    opacity: 0;
+    top: 0;
+    bottom: 90%;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating {
+    border: none;
+    float: left;
+}
+
+.rating > input { display: none; }
+.rating > label:before {
+    margin: 5px;
+    font-size: 1em;
+    font-family: FontAwesome, serif;
+    display: inline-block;
+    content: "\f005";
+}
+
+.rating > .half:before {
+    content: "\f089";
+    position: absolute;
+}
+
+.rating > label {
+    color: #ddd;
+    float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
