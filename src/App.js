@@ -1,10 +1,10 @@
 import './App.css';
-import {SearchForm} from "./components/SerchForm";
+import {Main} from "./components/Main";
 
 function App() {
     return (
         <>
-            <SearchForm/>
+            <Main/>
         </>
     );
 }

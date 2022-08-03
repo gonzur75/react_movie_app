@@ -17,14 +17,9 @@ const getMovie = async (title) => {
     }
 }
 
-MovieItem.propTypes = {movie: PropTypes.any};
 
-MovieList.propTypes = {
-    movies: PropTypes.arrayOf(PropTypes.any),
-    callbackfn: PropTypes.func
-};
 
-export function SearchForm() {
+export function Main() {
     const [movies, setMovies] = useState([])
     const [searchValue, setSearchValue] = useState('')
     const [title, setTitle] = useState('')
@@ -63,8 +58,7 @@ export function SearchForm() {
                 </Col>
 
             </Form>
-            <MovieList movies={movies} callbackfn={movie => (
-                <MovieItem key={movie.imdbID} movie={movie}/>
+            <MovieList movies={movies} />
             )}/>
 
 
