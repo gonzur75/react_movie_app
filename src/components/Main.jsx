@@ -18,7 +18,6 @@ const getMovie = async (title) => {
 }
 
 
-
 export function Main() {
     const [movies, setMovies] = useState([])
     const [searchValue, setSearchValue] = useState('')
@@ -56,12 +55,8 @@ export function Main() {
                         Submit
                     </Button>
                 </Col>
-
             </Form>
-            <MovieList movies={movies} />
-            )}/>
-
-
+            <MovieList movies={movies}/>
         </>
     )
 }

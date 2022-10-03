@@ -7,4 +7,6 @@ function mapDispatch(dispatch) {
         addWatchedMovie:(movie)=>dispatch(addWatchedMovie(movie))
     }
 }
-export default connect(null, mapDispatch)(MovieList)
+//
+// function
+// export default connect(null, mapDispatch)(MovieList)
