@@ -1,10 +1,6 @@
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import {useEffect, useState} from "react";
-import * as PropTypes from "prop-types";
-import {MovieItem} from "./MovieItem";
 import {MovieList} from "./MovieList";
+import {SearchForm} from "./SearchForm";
 
 
 const getMovie = async (title) => {
@@ -16,6 +12,7 @@ const getMovie = async (title) => {
         return responseJson.Search
     }
 }
+
 
 
 export function Main() {
@@ -40,22 +37,7 @@ export function Main() {
 
     return (
         <>
-            <Form>
-                <Col>
-                    <Form.Group className="my-1">
-                        <Form.Control type="text"
-                                      onChange={handleChange}
-
-                                      name="title" value={title}
-                                      placeholder="Find a movie ..."/>
-                    </Form.Group>
-                </Col>
-                <Col className="my-1">
-                    <Button variant="primary" type="submit" onClick={handleSubmit}>
-                        Submit
-                    </Button>
-                </Col>
-            </Form>
+            <SearchForm onChange={handleChange} value={title} onClick={handleSubmit}/>
             <MovieList movies={movies}/>
         </>
     )
