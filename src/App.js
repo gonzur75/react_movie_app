@@ -18,11 +18,14 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Main />,
+        children: [
+            {
+                path: "seen",
+                element: <SeenMovie />,
+            },
+        ],
     },
-    {
-        path: "seen",
-        element: <SeenMovie />,
-    },
+
     ]);
 
 
