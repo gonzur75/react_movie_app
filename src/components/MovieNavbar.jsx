@@ -1,7 +1,12 @@
 import {Container, Nav, Navbar} from "react-bootstrap";
+import SearchForm from "../containers/SearchForm";
+
+
+
 
 export function MovieNavbar() {
     return (
+
         <Navbar bg="light" expand="lg">
             <Container>
                 <Navbar.Brand href="/">React-Movie-App</Navbar.Brand>
@@ -11,6 +16,7 @@ export function MovieNavbar() {
                         <Nav.Link to='/'>Home</Nav.Link>
                         <Nav.Link href="/seen">Watched movie</Nav.Link>
                     </Nav>
+                    <SearchForm />
                 </Navbar.Collapse>
             </Container>
         </Navbar>

@@ -4,9 +4,14 @@ import {connect} from "react-redux";
 
 function mapDispatch(dispatch) {
     return {
-        addWatchedMovie:(movie)=>dispatch(addWatchedMovie(movie))
+        addWatchedMovie: (movie) => dispatch(addWatchedMovie(movie))
     }
 }
-//
-// function
-// export default connect(null, mapDispatch)(MovieList)
+
+function mapState(state) {
+    return {
+        searchQuery: state.searchQuery
+    }
+}
+
+ export default connect(mapState, mapDispatch)(MovieList)

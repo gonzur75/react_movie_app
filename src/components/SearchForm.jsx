@@ -1,26 +1,34 @@
 import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import * as PropTypes from "prop-types";
+import {useState} from "react";
 
-export function SearchForm(props) {
-    return <Form>
-        <Col>
-            <Form.Group className="my-1">
+const SearchForm = ({onSearchQuery}) => {
+
+    const [searchValue, setSearchValue] = useState('')
+    const handleChange = event => {
+        setSearchValue(event.target.value)
+    }
+    const handleSubmit = event => {
+        event.preventDefault()
+        onSearchQuery(searchValue)
+
+
+    }
+
+    return <Form className="d-flex">
+            <Form.Group className="me-3">
                 <Form.Control type="text"
-                              onChange={props.onChange}
-
-                              name="title" value={props.value}
-                              placeholder="Find a movie ..."/>
+                          onChange={handleChange}
+                          name="title"
+                          value={searchValue}
+                          placeholder="Find a movie ..."/>
             </Form.Group>
-        </Col>
-        <Col className="my-1">
-            <Button variant="primary" type="submit" onClick={props.onClick}>
-                Submit
-            </Button>
-        </Col>
-    </Form>;
+            <Button variant="outline-success" type="submit" onClick={handleSubmit}>Search</Button>
+        </Form>;
 }
+
+export default SearchForm
 
 SearchForm.propTypes = {
     onChange: PropTypes.func,
