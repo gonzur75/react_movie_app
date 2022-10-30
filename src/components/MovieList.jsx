@@ -12,11 +12,12 @@ export function MovieList({searchQuery, addWatchedMovie}) {
 
 
     return <section className="results">
-        <div className="row">
-            {movies.length>0&&movies.map(movie => <MovieItem key={movie.imdbID} movie={movie} addWatchedMovie={addWatchedMovie}/>)}
 
-        </div>
-    </section>;
+                {movies.length > 0 && movies.map(movie => <MovieItem key={movie.imdbID} movie={movie}
+                                                                     addWatchedMovie={addWatchedMovie}/>)}
+
+        </section>;
+
 }
 
 MovieList.propTypes = {

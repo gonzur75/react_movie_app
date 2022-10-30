@@ -1,6 +1,7 @@
 import './App.css';
 import {Main} from "./components/Main";
 import {createBrowserRouter} from "react-router-dom";
+import {ProductDetail} from "./components/ProductDetail";
 
 
 
@@ -20,8 +21,8 @@ const router = createBrowserRouter([
         element: <Main />,
         children: [
             {
-                path: "seen",
-                element: <SeenMovie />,
+                path: "detail/:movieID",
+                element: <ProductDetail />,
             },
         ],
     },
