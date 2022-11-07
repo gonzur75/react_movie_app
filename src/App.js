@@ -1,7 +1,8 @@
 import './App.css';
-import {Main} from "./components/Main";
-import {createBrowserRouter} from "react-router-dom";
-import {ProductDetail} from "./components/ProductDetail";
+import {Layout} from "./components/Layout";
+import {createBrowserRouter, Route, Routes} from "react-router-dom";
+import MovieList from "./containers/MovieList";
+import {MovieDetail} from "./components/MovieDetail";
 
 
 
@@ -15,20 +16,19 @@ export function SeenMovie() {
 }
 
 
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Main />,
-        children: [
-            {
-                path: "detail/:movieID",
-                element: <ProductDetail />,
-            },
-        ],
-    },
-
-    ]);
-
+export default function App() {
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Layout/>}>
+                    <Route index element={<MovieList />} />
+                    <Route path="detail/:movieID" element={<MovieDetail />}/>
+                </Route>
+            </Routes>
+        </>
+    )
+}
 
 
-export default router;
+
+
